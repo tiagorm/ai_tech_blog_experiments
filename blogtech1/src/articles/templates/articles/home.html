@@ -1,0 +1,29 @@
+{% extends 'articles/base.html' %}
+{% block title %}Home | AI Engineering Blog{% endblock %}
+{% block content %}
+    <section class="hero">
+        <h2>Welcome to the AI Engineering Blog</h2>
+        <p>Your source for the latest in AI, machine learning, and engineering best practices.</p>
+    </section>
+    {% if latest_article %}
+    <section class="latest-article-section">
+        <h3 class="latest-label">Latest Article</h3>
+        <article class="latest-article-card">
+            <h2><a href="{{ latest_article.get_absolute_url }}">{{ latest_article.title }}</a></h2>
+            <div class="date">{{ latest_article.created_at|date:"F j, Y" }}</div>
+            <p>{{ latest_article.summary|default:latest_article.content|truncatewords:40 }}</p>
+            <a href="{{ latest_article.get_absolute_url }}" class="button">Read More</a>
+        </article>
+    </section>
+    {% endif %}
+    <section class="articles-list">
+        {% for article in articles %}
+            <article class="article-preview">
+                <h3><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3>
+                <p>{{ article.summary|default:article.content|truncatewords:30 }}</p>
+            </article>
+        {% empty %}
+            <p>No articles yet.</p>
+        {% endfor %}
+    </section>
+{% endblock %}
