@@ -1,0 +1,11 @@
+{% extends 'articles/base.html' %}
+{% block title %}{{ article.title }} | AI Engineering Blog{% endblock %}
+{% block content %}
+<article class="article-detail">
+    <h2 class="article-title">{{ article.title }}</h2>
+    <div class="date">{{ article.created_at|date:"F j, Y" }}</div>
+    <div class="article-body">
+        {{ html_content|safe }}
+    </div>
+</article>
+{% endblock %}

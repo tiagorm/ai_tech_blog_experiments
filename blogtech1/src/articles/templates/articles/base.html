@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AI Engineering Blog{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">
+                <span class="logo-icon">
+                    <!-- Simple AI/brain SVG icon -->
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" stroke="var(--accent)" stroke-width="2" fill="var(--logo-bg, #fff)"/>
+                        <path d="M12 16c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4" stroke="var(--secondary)" stroke-width="2" fill="none"/>
+                        <circle cx="16" cy="16" r="1.5" fill="var(--accent)"/>
+                    </svg>
+                </span>
+                <a href="/">AI Engineering Blog</a>
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/articles/">Articles</a></li>
+                    <li><a href="/about/">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; {% now "Y" %} AI Engineering Blog. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 
